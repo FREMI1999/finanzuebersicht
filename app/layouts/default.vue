@@ -2,6 +2,8 @@
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+const appVersion = import.meta.env.VITE_APP_VERSION || 'dev'
+
 const route = useRoute()
 
 const sidebarOpen = ref(false)
@@ -116,7 +118,7 @@ watch(
         </span>
 
         <span>
-          v1.0.0
+          {{ appVersion }}
         </span>
       </div>
     </aside>
