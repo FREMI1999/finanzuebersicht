@@ -599,13 +599,16 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
+
   z-index: 1000;
 
   display: flex;
   flex-direction: column;
 
   width: 250px;
-  height: 100vh;
+  height: 100dvh;
+  max-height: 100dvh;
 
   padding: 20px 14px;
 
@@ -613,14 +616,20 @@ h1 {
   color: white;
 
   border-right: 1px solid #1f2937;
+
+  overflow: hidden;
 }
 
-/* Header */
+/* =========================================================
+   SIDEBAR HEADER
+   ========================================================= */
 
 .sidebar-header {
   display: flex;
   align-items: center;
   gap: 12px;
+
+  flex-shrink: 0;
 
   padding: 8px 10px 25px;
 }
@@ -629,6 +638,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 
   width: 40px;
   height: 40px;
@@ -640,6 +651,10 @@ h1 {
 
   font-size: 20px;
   font-weight: 700;
+}
+
+.sidebar-header-text {
+  min-width: 0;
 }
 
 .sidebar-title {
@@ -655,18 +670,44 @@ h1 {
   font-size: 12px;
 }
 
-/* Navigation */
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
 
 .sidebar-navigation {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  flex: 1;
+  min-height: 0;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #374151 transparent;
+}
+
+.sidebar-navigation::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-navigation::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-navigation::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 10px;
 }
 
 .sidebar-link {
   display: flex;
   align-items: center;
   gap: 12px;
+
+  flex-shrink: 0;
 
   padding: 11px 12px;
 
@@ -702,18 +743,26 @@ h1 {
   align-items: center;
   justify-content: center;
 
+  flex-shrink: 0;
+
   width: 22px;
 
   font-size: 18px;
 }
 
-/* Footer */
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
 
 .sidebar-footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 
-  margin-top: auto;
+  flex-shrink: 0;
+
+  margin-top: 15px;
   padding: 15px 10px 5px;
 
   border-top: 1px solid #1f2937;
@@ -723,13 +772,18 @@ h1 {
   font-size: 11px;
 }
 
+.sidebar-footer span:last-child {
+  white-space: nowrap;
+}
+
 /* =========================================================
-   CONTENT
+   MAIN CONTENT
    ========================================================= */
 
 .app-content {
   width: 100%;
   min-width: 0;
+
   margin-left: 250px;
 }
 
@@ -743,6 +797,7 @@ h1 {
   position: fixed;
   top: 14px;
   left: 14px;
+
   z-index: 1100;
 
   width: 42px;
@@ -770,6 +825,7 @@ h1 {
   margin: 4px 0;
 
   background: #111827;
+
   border-radius: 2px;
 }
 
@@ -780,6 +836,7 @@ h1 {
 .sidebar-overlay {
   position: fixed;
   inset: 0;
+
   z-index: 900;
 
   background: rgba(0, 0, 0, 0.45);
@@ -792,6 +849,16 @@ h1 {
 @media (max-width: 800px) {
 
   .sidebar {
+    width: min(280px, 85vw);
+
+    padding-top: calc(
+      20px + env(safe-area-inset-top)
+    );
+
+    padding-bottom: calc(
+      10px + env(safe-area-inset-bottom)
+    );
+
     transform: translateX(-100%);
 
     transition: transform 0.2s ease;
@@ -805,6 +872,10 @@ h1 {
 
   .sidebar-toggle {
     display: block;
+
+    top: calc(
+      14px + env(safe-area-inset-top)
+    );
   }
 
   .app-content {
@@ -812,10 +883,14 @@ h1 {
   }
 
   /*
-   * Etwas mehr Abstand oben auf mobilen Seiten,
-   * damit der Menübutton nicht über den Inhalt ragt.
+   * Abstand oben, damit der Menübutton
+   * nicht über den Seiteninhalt ragt.
    */
   .app-content .page {
     padding-top: 75px;
+  }
+
+  .sidebar-footer {
+    padding-bottom: 5px;
   }
 }

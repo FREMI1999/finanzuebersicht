@@ -17,8 +17,7 @@ const closeSidebar = () => {
 }
 
 /*
- * Auf dem Handy Sidebar automatisch schließen,
- * wenn auf eine andere Seite navigiert wurde.
+ * Sidebar nach Navigation auf mobilen Geräten schließen.
  */
 watch(
   () => route.path,
@@ -45,9 +44,9 @@ watch(
       aria-label="Navigation öffnen"
       @click="toggleSidebar"
     >
-      <span />
-      <span />
-      <span />
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
     <!-- Sidebar -->
@@ -59,13 +58,15 @@ watch(
         }
       ]"
     >
-      <!-- Logo / Titel -->
+
+      <!-- Header -->
       <div class="sidebar-header">
+
         <div class="sidebar-logo">
           €
         </div>
 
-        <div>
+        <div class="sidebar-header-text">
           <div class="sidebar-title">
             Finanzen
           </div>
@@ -74,6 +75,7 @@ watch(
             Finanzübersicht
           </div>
         </div>
+
       </div>
 
       <!-- Navigation -->
@@ -113,6 +115,7 @@ watch(
 
       <!-- Footer -->
       <div class="sidebar-footer">
+
         <span>
           Finanzübersicht
         </span>
@@ -120,7 +123,9 @@ watch(
         <span>
           {{ appVersion }}
         </span>
+
       </div>
+
     </aside>
 
     <!-- Hauptinhalt -->
