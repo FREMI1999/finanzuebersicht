@@ -15,22 +15,27 @@ export default defineNuxtConfig({
     registerType: 'autoUpdate',
 
     manifest: {
+      id: '/finanzuebersicht/',
       name: 'Finanzübersicht',
       short_name: 'Finanzen',
       description: 'Meine persönliche Finanzübersicht',
+
+      start_url: '/finanzuebersicht/',
+      scope: '/finanzuebersicht/',
+
+      display: 'standalone',
+
       theme_color: '#111827',
       background_color: '#111827',
-      display: 'standalone',
-      start_url: '.',
 
       icons: [
         {
-          src: '/pwa-192x192.png',
+          src: 'pwa-192x192.png',
           sizes: '192x192',
           type: 'image/png'
         },
         {
-          src: '/pwa-512x512.png',
+          src: 'pwa-512x512.png',
           sizes: '512x512',
           type: 'image/png'
         }
