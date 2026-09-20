@@ -1,5 +1,5 @@
 # how to start
-- bun build
+- bun run build
 - bun run dev
 
 ## Finanzübersicht
