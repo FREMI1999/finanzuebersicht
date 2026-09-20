@@ -28,15 +28,15 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build
-        run: bun run generate
+      - name: Build Nuxt
+        run: bun run build
         env:
           NUXT_APP_BASE_URL: /finanzuebersicht/
 
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: .output/public
+          path: ./.output/public
 
   deploy:
     environment:
