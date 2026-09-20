@@ -18,3 +18,4 @@
 ## ideen
 
 - vierteljährlich einbauen
+- Filter in eintragen einbauen 
