@@ -1,21 +1,12 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-20',
 
+  ssr: false,
+
   css: [
     '~/assets/css/styles.css'
   ],
 
-  app: {
-    head: {
-      link: [
-        {
-          rel: 'icon',
-          type: 'image/x-icon',
-          href: '/favicon.svg'
-        }
-      ]
-    }
-  },
   modules: [
     '@vite-pwa/nuxt'
   ],
@@ -30,6 +21,7 @@ export default defineNuxtConfig({
       theme_color: '#111827',
       background_color: '#111827',
       display: 'standalone',
+      start_url: '.',
 
       icons: [
         {

@@ -4,9 +4,7 @@
 
 ## Finanzübersicht
 - PWA
-- SQLite
 - Vue
-- Docker
 
 ## für Handy und Desktop
 
